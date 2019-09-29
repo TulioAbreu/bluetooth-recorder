@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Recorder</string>
+    <string name="select_your_target_device">Select your target device</string>
+    <string name="record">Record</string>
 </resources>
