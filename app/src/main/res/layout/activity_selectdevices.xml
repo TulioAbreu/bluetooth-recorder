@@ -10,6 +10,12 @@
         android:text="@string/select_your_target_device"
         android:textSize="30sp" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:text="@android:string/ok" />
+
     <ListView
         android:id="@+id/devList"
         android:layout_width="match_parent"
@@ -17,9 +23,4 @@
 
     </ListView>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="159dp"
-        android:layout_height="wrap_content"
-        android:text="@android:string/ok" />
 </LinearLayout>
