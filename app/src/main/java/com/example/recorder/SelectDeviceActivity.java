@@ -52,14 +52,25 @@ public class SelectDeviceActivity extends Activity {
         devicesList.setAdapter(btArray);
 
         devicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position,
                                     long arg3) {
-                String value = (String)adapter.getItemAtPosition(position);
+                if (selectedAddress != "") {
+                    BluetoothService btService = BluetoothService.getInstance();
+                    Log.d("debug", "Setting remote address to: " + selectedAddress);
+                    btService.setRemoteDevice(selectedAddress);
 
-                String[] valueChunks = value.split("\n");
-                selectedAddress = valueChunks[valueChunks.length-1];
-                Log.d("debug", "Selected address: " + selectedAddress);
+                    Intent appActivityIntent = new Intent(v.getContext(), AppActivity.class);
+                    startActivity(appActivityIntent);
+                }
+                else {
+                    String value = (String)adapter.getItemAtPosition(position);
+
+                    String[] valueChunks = value.split("\n");
+                    selectedAddress = valueChunks[valueChunks.length-1];
+                    Log.d("debug", "Selected address: " + selectedAddress);
+                }
             }
         });
 
